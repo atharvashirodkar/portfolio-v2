@@ -21,9 +21,7 @@
 }
 
 /* ── Reset & Base ── */
-*,
-*::before,
-*::after {
+*{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -39,17 +37,6 @@ body {
     font-family: var(--body);
     font-size: 16px;
     line-height: 1.6;
-    overflow-x: hidden;
-}
-
-/* ── Grain Texture Overlay ── */
-body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 999;
 }
 
 /* ── Navbar ── */
@@ -179,6 +166,11 @@ h2.section-title {
     padding-top: 100px;
     position: relative;
     overflow: hidden;
+}
+
+.hero-btn-group2 {
+    gap: 18px;
+    display: flex;
 }
 
 .hero-grid {
@@ -853,16 +845,16 @@ footer {
 }
 
 /* ── Scroll animation ── */
-/* .reveal {
+.reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-} */
-/* 
-/* .reveal.visible {
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.visible {
     opacity: 1;
     transform: translateY(0);
-} */ */
+}
 
 /* ── Divider doodle ── */
 .doodle-divider {
@@ -881,8 +873,45 @@ footer {
         padding: 8px 18px;
     }
 
+    .float-note:nth-child(3) {
+        top: 22%;
+        right: 5%;
+        --rot: 7deg;
+    }
+
+    .float-note:nth-child(2) {
+        bottom: 82%;
+        left: 12%;
+        --rot: -3deg;
+    }
+
+    .float-note:nth-child(1) {
+        top: 28%;
+        right: 65%;
+        --rot: -10deg;
+    }
+
+    .hero-tag {
+        display: none;
+    }
+
     .hero-grid {
         grid-template-columns: 1fr;
+    }
+
+    .hero-links {
+        gap: 18px
+    }
+
+    .hero-btn-group1,
+    .hero-btn-group2 {
+        flex-grow: 1;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .hero-btn-group1 {
+        order: 2;
     }
 
     .hero-doodle {
@@ -891,6 +920,10 @@ footer {
 
     h1.hero-name {
         font-size: 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 16px;
     }
 
     .project-card {
